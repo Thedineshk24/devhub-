@@ -1,7 +1,7 @@
 {
-  "name": "nextly-template",
+  "name": "DevHub",
   "version": "0.1.0",
-  "description": "Nextly Landing Page Template",
+  "description": "DevHub",
   "private": true,
   "scripts": {
     "dev": "env-cmd -f .env next dev",
@@ -17,7 +17,7 @@
     "tailwindcss",
     "free"
   ],
-  "author": "Dinesh Katariya",
+  "author": "Dinesh",
   "license": "ISC",
   "dependencies": {
     "@emotion/css": "^11.10.6",
@@ -36,7 +36,8 @@
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.43.9"
+    "react-hook-form": "^7.43.9",
+    "simple-peer": "^9.11.1"
   },
   "devDependencies": {
     "@1password/save-button": "^1.3.0",
