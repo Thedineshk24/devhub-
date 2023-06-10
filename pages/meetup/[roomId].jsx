@@ -5,10 +5,13 @@ const AgoraUIKit = dynamic(() => import('agora-react-uikit'), {
 });
 
 const App = () => {
+  const { query } = useRouter();
+  const { token } = query;
+
   const rtcProps = {
     appId: 'd3a25309e6874d26b4b57aa08756dd26',
     channel: 'test', // your agora channel
-    // token: Math.random(0,1),
+    token: token,
     enableScreensharing: true, // Enable screen sharing
     enableChat: true,
   };
