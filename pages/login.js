@@ -1,8 +1,6 @@
 import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 
-// dynamic(() => import('@passageidentity/passage-elements/passage-auth'), { ssr: true });
-
 function Login() {
   useEffect(() => {
     import('@passageidentity/passage-elements/passage-auth').then(() => {

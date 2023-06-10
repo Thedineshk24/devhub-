@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import "@passageidentity/passage-elements/passage-profile";
+import dynamic from 'next/dynamic';
+dynamic(() => import('@passageidentity/passage-elements/passage-profile'), {
+  ssr: false,
+});
 function Profile() {
     useEffect(()=>{
            require('@passageidentity/passage-auth');
