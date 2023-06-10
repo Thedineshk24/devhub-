@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply dark:bg-trueGray-900;
+  }
+}
+
+/* Custom styles for passage-auth element */
+passage-auth {
+  --passage-container-background-color: #f8f8f8;
+  --passage-container-max-width: 400px;
+  --passage-container-padding: 20px;
+  --passage-body-font-family: 'Arial', sans-serif;
+  --passage-body-text-color: #333;
+  --passage-primary-color: #ff9900;
+}
+
+/* Custom styles for passage-profile element */
+passage-profile {
+  --passage-container-background-color: #f8f8f8;
+  --passage-container-max-width: 600px;
+  --passage-container-padding: 40px;
+  --passage-body-font-family: 'Arial', sans-serif;
+  --passage-body-text-color: #333;
+  --passage-primary-color: #ff9900;
+}
+
+/* Additional styling for passage-auth element */
+passage-auth {
+  margin-bottom: 20px;
+}
+
+/* Additional styling for passage-profile element */
+passage-profile {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for form inputs in passage-auth element */
+passage-auth input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Styling for buttons in passage-auth element */
+passage-auth button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff9900;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Styling for links in passage-auth element */
+passage-auth a {
+  color: #ff9900;
+}
+
+/* Additional styling for passage-profile element */
+passage-profile {
+  background-color: #fff;
+  padding: 40px;
+}
+
+/* Styling for profile information in passage-profile element */
+passage-profile .profile-info {
+  margin-bottom: 20px;
+}
+
+/* Styling for profile labels in passage-profile element */
+passage-profile .profile-info label {
+  font-weight: bold;
+}
+
+/* Styling for profile values in passage-profile element */
+passage-profile .profile-info p {
+  margin: 5px 0;
+}
+
