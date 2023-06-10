@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
-import dynamic from 'next/dynamic';
-dynamic(() => import('@passageidentity/passage-elements/passage-profile'), {
-  ssr: false,
-});
 function Profile() {
     useEffect(()=>{
-           require('@passageidentity/passage-auth');
+           require('@passageidentity/passage-elements/passage-profile');
          }, []);       
   return (
     <div className="mt-8">

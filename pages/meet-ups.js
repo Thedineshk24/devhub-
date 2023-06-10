@@ -24,10 +24,10 @@ const EventCard = () => {
     fetchEvent();
   }, []);
 
-  const handleJoinNow = async (userName,eventId) => {
+  const handleJoinNow = async (eventId,channel) => {
     const appID = "d3a25309e6874d26b4b57aa08756dd26";
     const appCertificate = "2e207977c08f4cc99d2c7fe6c740fdfc";
-    const channelName = `meetup/${eventId}`;
+    const channelName = channel?.trim();
     const uid = eventId;
     const role = RtcRole.PUBLISHER;
     const expirationTimeInSeconds = 3600;
@@ -45,7 +45,7 @@ const EventCard = () => {
     );
 
     // Redirect to the specified URL
-    router.push(`/meetup/${eventId}=${token}`);
+    router.push(`/meetup/roomId?${token}`);
   };
 
   return (
@@ -71,7 +71,7 @@ const EventCard = () => {
                 <div className="flex items-center mr-4">
                   <button
                     className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => handleJoinNow(username,event.sys.id)}
+                    onClick={() => handleJoinNow(event.sys.id,event.fields.eventName)}
                   >
                     Join Now
                   </button>
