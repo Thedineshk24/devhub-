@@ -27,7 +27,7 @@ const EventCard = () => {
   const handleJoinNow = async (userName,eventId) => {
     const appID = "d3a25309e6874d26b4b57aa08756dd26";
     const appCertificate = "2e207977c08f4cc99d2c7fe6c740fdfc";
-    const channelName = `meetup/${userName}`;
+    const channelName = `meetup/${eventId}`;
     const uid = eventId;
     const role = RtcRole.PUBLISHER;
     const expirationTimeInSeconds = 3600;
