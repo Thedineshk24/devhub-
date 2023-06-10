@@ -24,11 +24,11 @@ const EventCard = () => {
     fetchEvent();
   }, []);
 
-  const handleJoinNow = async (eventId) => {
+  const handleJoinNow = async (userName,eventId) => {
     const appID = "d3a25309e6874d26b4b57aa08756dd26";
     const appCertificate = "2e207977c08f4cc99d2c7fe6c740fdfc";
-    const channelName = `meetup/${eventId}`;
-    const uid = 0;
+    const channelName = `meetup/${userName}`;
+    const uid = eventId;
     const role = RtcRole.PUBLISHER;
     const expirationTimeInSeconds = 3600;
     const privilegeExpiredTs =
@@ -71,7 +71,7 @@ const EventCard = () => {
                 <div className="flex items-center mr-4">
                   <button
                     className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => handleJoinNow(username)}
+                    onClick={() => handleJoinNow(username,event.sys.id)}
                   >
                     Join Now
                   </button>
