@@ -104,14 +104,16 @@ export default function Footer() {
         </div>
 
         <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
-          Copyright © {new Date().getFullYear()}. Made with ♥ by{" "}
-          <a href="https://web3templates.com/" target="_blank" rel="noopener">
-            Web3Templates.
-          </a>{" "}
+          Copyright © {new Date().getFullYear()}. Made with ❤️ by
+          {" Dinesh Katariya "} <br />
           Illustrations from{" "}
           <a href="https://www.glazestock.com/" target="_blank" rel="noopener ">
-            Glazestock
+            Glazestock {" & "}
           </a>
+          <a href="https://www.freepik.com/free-vector/business-meeting-brainstorming-team-people-working-office-corporate-communication-men-women-sitting-negotiating-studying_28849761.htm#query=group%20people%20laptop&position=19&from_view=search&track=ais">
+            Image by studio4rt
+          </a>{" "}
+          on Freepik
         </div>
       </Container>
       {/* Do not remove this */}

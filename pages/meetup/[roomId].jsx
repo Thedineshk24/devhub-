@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
+import { useCurrentUser } from '../../hooks/useCurrentUser';
 
 const AgoraUIKit = dynamic(() => import('agora-react-uikit'), {
   ssr: false,
 });
 
 const RoomId = () => {
+  useCurrentUser();
+
   const router = useRouter();
   const { channelName } = router.query;
+  
   const rtcProps = {
     appId: 'd3a25309e6874d26b4b57aa08756dd26',
     channel: channelName,
