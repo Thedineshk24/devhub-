@@ -22,7 +22,7 @@ export default function Footer() {
             </div>
 
             <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-              DevHub: connects developers with local events and communities.
+              DevHub: connects developers with events and communities.
             </div>
 
             <div className="mt-5">
@@ -47,7 +47,8 @@ export default function Footer() {
               {navigation.map((item, index) => (
                 <Link
                   key={index}
-                  href="/"
+                  target="_blank"
+                  href="https://thedineshk.hashnode.dev/"
                   className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-trueGray-700"
                 >
                   {item}
