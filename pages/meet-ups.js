@@ -8,7 +8,7 @@ import HeaderMyProfile from "../components/headerMyProfile";
 const EventCard = () => {
   const router = useRouter();
   const [eventData, setEventData] = useState(null);
-  const {username} = useCurrentUser();
+  useCurrentUser();
 
   useEffect(() => {
     async function fetchEvent() {
