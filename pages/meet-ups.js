@@ -45,7 +45,7 @@ const EventCard = () => {
     );
 
     // Redirect to the specified URL
-    router.push(`/meetup/roomId?${token}`);
+    router.push(`/meetup/roomId?&token=${token}&channelName=${channelName?.trim(" ")[0]}`);
   };
 
   return (

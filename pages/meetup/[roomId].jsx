@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { RtcTokenBuilder, RtcRole } from 'agora-access-token';
 
 const AgoraUIKit = dynamic(() => import('agora-react-uikit'), {
   ssr: false,
@@ -9,18 +8,25 @@ const AgoraUIKit = dynamic(() => import('agora-react-uikit'), {
 
 const RoomId = () => {
   const router = useRouter();
-  const { roomId, token } = router.query;
-
+  const { channelName } = router.query;
   const rtcProps = {
     appId: 'd3a25309e6874d26b4b57aa08756dd26',
-    channel: roomId,
-    token: token,
+    channel: channelName,
     enableScreensharing: true,
-    enableChat: true,
+    mode: 'live',
+    codec: 'h264',
+    dualStream: false,
+    microphoneId: '',
+    cameraId: '',
+    cameraResolution: 'default',
+    videoProfile: '480p_4',
+    audioProfile: 'default',
+    audioScenario: 'default',
   };
+   
 
   const callbacks = {
-    EndCall: () => setVideoCall(false),
+    EndCall: () => router.push('/meet-ups'),
   };
 
   return (

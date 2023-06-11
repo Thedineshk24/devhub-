@@ -32,7 +32,6 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "agora-access-token": "^2.0.4",
     "agora-react-uikit": "^1.2.0",
-    "agora-rtc-sdk-ng": "^4.17.2",
     "contentful": "^10.2.3",
     "dotenv": "^16.1.4",
     "next": "^13.3.1",

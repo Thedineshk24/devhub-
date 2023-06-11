@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import ThemeChanger from '../components/DarkSwitch';
 
 function Login() {
   useEffect(() => {
@@ -8,6 +9,7 @@ function Login() {
   }, []);
   return (
       <div>
+        <ThemeChanger />
         <passage-auth app-id={"YkgyHbFAzEUIDk24xNeiDMJs"}></passage-auth>
       </div>
   );

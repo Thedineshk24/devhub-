@@ -116,18 +116,18 @@ const PopupWidget = () => {
                     <form onSubmit={handleSubmit(onSubmit)} noValidate>
                       <input
                         type="hidden"
-                        value="YOUR_ACCESS_KEY_HERE"
+                        value="a876b83b-d9ca-46a9-9610-04fd6308fa69"
                         {...register("apikey")}
                       />
                       <input
                         type="hidden"
-                        value={`${userName} sent a message from Nextly`}
+                        value={`${userName} sent a message from DevHUb`}
                         {...register("subject")}
                       />
                       <input
                         type="hidden"
-                        value="Nextly Template"
-                        {...register("from_name")}
+                        value=""
+                        {...register("DevHub")}
                       />
                       <input
                         type="checkbox"
@@ -254,7 +254,6 @@ const PopupWidget = () => {
                           <a
                             href="https://Web3Forms.com"
                             className="text-gray-600"
-                            target="_blank"
                             rel="noopener noreferrer">
                             Web3Forms
                           </a>
