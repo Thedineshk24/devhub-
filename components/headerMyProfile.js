@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 const HeaderMyProfile = () => {
   const [showNotice, setShowNotice] = useState(true);
@@ -13,7 +13,7 @@ const HeaderMyProfile = () => {
       {showNotice && (
         <div className="bg-indigo-500 text-white px-4 py-2 flex justify-between items-center">
           <span className="font-bold">
-          Please click on "Join Now" when the timer reaches zero.
+            Please click on "Join Now" when the timer reaches zero.
           </span>
           <button
             className="text-white focus:outline-none"
@@ -41,10 +41,10 @@ const HeaderMyProfile = () => {
               DevHub
             </span>
           </Link>
-          <div className="flex items-center lg:order-2">
+          <div className="flex items-center lg:order-2 bg-indigo-600 rounded-md">
             <Link
               href="/profile"
-              className="text-2xl font-bold inline-block px-4 py-2 text-indigo-600 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
+              className="text-2xl font-bold inline-block px-4 py-2 text-white no-underline dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
             >
               My Profile
             </Link>
