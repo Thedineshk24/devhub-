@@ -51,7 +51,37 @@ const EventCard = () => {
     );
   };
 
-  console.log("eventData", eventData);
+  const calculateCountdown = (startDate) => {
+    const currentDate = new Date();
+    const eventDate = new Date(startDate);
+
+    const timeDiff = eventDate - currentDate;
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    return {days, hours, minutes, seconds};
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setEventData((prevEventData) => {
+        if (prevEventData) {
+          const updatedEventData = prevEventData.map((event) => {
+            const countdown = calculateCountdown(event.fields.startDate);
+            return {...event, countdown};
+          });
+          return updatedEventData;
+        }
+        return null;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -65,6 +95,7 @@ const EventCard = () => {
             const techArray = event?.fields?.technology
               ?.split(",")
               .map((tech) => tech.trim());
+
             return (
               <div
                 key={event.sys.id}
@@ -94,7 +125,7 @@ const EventCard = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex justify-between">
                     <div className="flex items-center mr-4">
                       <button
                         className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
@@ -105,6 +136,24 @@ const EventCard = () => {
                         Join Now
                       </button>
                     </div>
+                    {event.countdown && (
+                      <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded animate-pulse">
+                        <div className="flex items-center">
+                          <div className="bg-indigo-100 text-indigo-600 rounded-full w-12 h-12 flex items-center justify-center mr-2">
+                            {event.countdown.days}d
+                          </div>
+                          <div className="bg-indigo-100 text-indigo-600 rounded-full w-12 h-12 flex items-center justify-center mr-2">
+                            {event.countdown.hours}h
+                          </div>
+                          <div className="bg-indigo-100 text-indigo-600 rounded-full w-12 h-12 flex items-center justify-center mr-2">
+                            {event.countdown.minutes}m
+                          </div>
+                          <div className="bg-indigo-100 text-indigo-600 rounded-full w-12 h-12 flex items-center justify-center">
+                            {event.countdown.seconds}s
+                          </div>
+                        </div>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
