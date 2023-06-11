@@ -44,7 +44,7 @@ const HeaderMyProfile = () => {
           <div className="flex items-center lg:order-2 bg-indigo-600 rounded-md">
             <Link
               href="/profile"
-              className="text-2xl font-bold inline-block px-4 py-2 text-white no-underline dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
+              className="text-2xl font-semibold inline-block px-4 py-2 text-white no-underline dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800"
             >
               My Profile
             </Link>
