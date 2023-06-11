@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
-const ThemeChanger = () => {
+const ThemeChanger = ({theme:themChange}) => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    setTheme(themChange)
+    return() => {
+      setTheme("dark")
+    }
+  },[themChange]);
 
   if (!mounted) return null;
 

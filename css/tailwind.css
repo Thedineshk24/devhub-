@@ -47,6 +47,7 @@ passage-auth input {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  width: 80vw;
 }
 
 /* Styling for buttons in passage-auth element */
@@ -86,3 +87,36 @@ passage-profile .profile-info p {
   margin: 5px 0;
 }
 
+/* Responsive Styles */
+
+@media (max-width: 640px) {
+  /* Adjust container max-width for smaller screens */
+  passage-auth,
+  passage-profile {
+    --passage-container-max-width: 100%;
+  }
+
+  /* Adjust padding for smaller screens */
+  passage-auth,
+  passage-profile {
+    --passage-container-padding: 10px;
+  }
+
+  /* Adjust font-size for smaller screens */
+  passage-auth input,
+  passage-auth button,
+  passage-profile .profile-info label,
+  passage-profile .profile-info p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Adjust font-size for even smaller screens */
+  passage-auth input,
+  passage-auth button,
+  passage-profile .profile-info label,
+  passage-profile .profile-info p {
+    font-size: 12px;
+  }
+}
