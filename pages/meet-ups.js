@@ -56,7 +56,7 @@ const EventCard = () => {
   return (
     <>
       <HeaderMyProfile />
-      <div className="mt-2">
+      <div className="mt-2 mx-auto max-w-screen-xl">
         <h1 className="text-center text-indigo-600 text-3xl font-extrabold">
           Dev Events
         </h1>

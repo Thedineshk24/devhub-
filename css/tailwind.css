@@ -27,6 +27,7 @@ passage-profile {
   --passage-body-font-family: 'Arial', sans-serif;
   --passage-body-text-color: #333;
   --passage-primary-color: #ff9900;
+  --passage-container-max-width: 1200px;
 }
 
 /* Additional styling for passage-auth element */
@@ -36,9 +37,7 @@ passage-auth {
 
 /* Additional styling for passage-profile element */
 passage-profile {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 40px;
 }
 
 /* Styling for form inputs in passage-auth element */
@@ -67,8 +66,7 @@ passage-auth a {
 }
 
 /* Additional styling for passage-profile element */
-passage-profile {
-  background-color: #fff;
+passage-profile .passage-profile-container{
   padding: 40px;
 }
 
