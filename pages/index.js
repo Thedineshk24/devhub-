@@ -23,7 +23,6 @@ const Home = () => {
           name="description"
           content="DevHub: A website that connects developers with events and communities."
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Navbar />

@@ -3,13 +3,9 @@ import {
   FaceSmileIcon,
   ChartBarSquareIcon,
   CursorArrowRaysIcon,
-  DevicePhoneMobileIcon,
-  AdjustmentsHorizontalIcon,
-  SunIcon,
 } from "@heroicons/react/24/solid";
 
 import benefitOneImg from "../public/img/benefit-one.png";
-import benefitTwoImg from "../public/img/benefit-two.png";
 
 const benefitOne = {
   title: "Benefits of Joining DevHub",
@@ -23,12 +19,12 @@ const benefitOne = {
     },
     {
       title: "Expand Your Knowledge",
-      desc: "Access a wealth of resources, tutorials, and workshops to enhance your skills.",
+      desc: "Access a wealth of resources, tutorials, and workshops to enhance your skills online.",
       icon: <ChartBarSquareIcon className="h-6 w-6" />,
     },
     {
       title: "Discover New Opportunities",
-      desc: "Stay informed about job postings, internships, and freelance gigs tailored for developers.",
+      desc: "Stay informed about latest events.",
       icon: <CursorArrowRaysIcon className="h-6 w-6" />,
     },
   ],

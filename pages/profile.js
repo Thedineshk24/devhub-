@@ -5,7 +5,7 @@ function Profile() {
          }, []);       
   return (
     <div className="bg-slate-100 h-screen text-white">
-        <passage-profile app-id="YkgyHbFAzEUIDk24xNeiDMJs"></passage-profile>
+        <passage-profile app-id={process.env.NEXT_PUBLIC_PASSAGE_APP_ID}></passage-profile>
     </div>
   );
 }

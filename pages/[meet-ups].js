@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { createClient } from "contentful";
-import { RtcTokenBuilder, RtcRole } from "agora-access-token";
-import { useCurrentUser } from "../hooks/useCurrentUser";
+import React, {useEffect, useState} from "react";
+import {useRouter} from "next/router";
+import {createClient} from "contentful";
+import {RtcTokenBuilder, RtcRole} from "agora-access-token";
+import {useCurrentUser} from "../hooks/useCurrentUser";
 import HeaderMyProfile from "../components/headerMyProfile";
+import ThemeChanger from "../components/DarkSwitch";
 
 const EventCard = () => {
   const router = useRouter();
@@ -15,9 +16,9 @@ const EventCard = () => {
   useEffect(() => {
     async function fetchEvent() {
       const client = createClient({
-        space: "t8fm8dtnm1v7",
+        space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
         environment: "master",
-        accessToken: "ZGaY_ofcU8k5V5xLTBwpOGTazY0LZ-Z7rFqLZd1pKVI",
+        accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
       });
 
       const response = await client.getEntries();
@@ -28,8 +29,8 @@ const EventCard = () => {
   }, []);
 
   const handleJoinNow = async (eventId, channel) => {
-    const appID = "d3a25309e6874d26b4b57aa08756dd26";
-    const appCertificate = "2e207977c08f4cc99d2c7fe6c740fdfc";
+    const appID = process.env.NEXT_PUBLIC_AGORA_APP_ID;
+    const appCertificate = process.env.NEXT_PUBLIC_AGORA_APP_CETIFICATE;
     const channelName = channel?.trim();
     const uid = eventId;
     const role = RtcRole.PUBLISHER;
@@ -72,7 +73,7 @@ const EventCard = () => {
       seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
     }
 
-    return { days, hours, minutes, seconds };
+    return {days, hours, minutes, seconds};
   };
 
   useEffect(() => {
@@ -81,7 +82,7 @@ const EventCard = () => {
         if (prevEventData) {
           const updatedEventData = prevEventData.map((event) => {
             const countdown = calculateCountdown(event.fields.startDate);
-            return { ...event, countdown };
+            return {...event, countdown};
           });
           return updatedEventData;
         }
@@ -118,6 +119,7 @@ const EventCard = () => {
 
   return (
     <>
+      <ThemeChanger theme="light" />
       <HeaderMyProfile />
       <div className="mt-2 mx-auto max-w-screen-xl">
         <h1 className="text-center text-indigo-600 text-3xl font-extrabold">
@@ -184,10 +186,7 @@ const EventCard = () => {
                         <button
                           className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
                           onClick={() =>
-                            handleJoinNow(
-                              event.sys.id,
-                              event.fields.eventName
-                            )
+                            handleJoinNow(event.sys.id, event.fields.eventName)
                           }
                         >
                           Join Now
@@ -217,38 +216,20 @@ const EventCard = () => {
               </div>
             );
           })}
-
-        {/* Pagination */}
         <div className="flex justify-center mt-4">
-          {/* <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination"> */}
-            {/* <button
-              onClick={() => handlePaginationClick(1)}
+          {Array.from({length: totalPages}, (_, i) => (
+            <button
+              key={i + 1}
+              onClick={() => handlePaginationClick(i + 1)}
               className={`${
-                currentPage === 1 ? "bg-indigo-600 text-white" : "bg-white text-gray-500 hover:bg-gray-50"
+                currentPage === i + 1
+                  ? "bg-indigo-600 text-white"
+                  : "bg-white text-gray-500 hover:bg-gray-50"
               } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
             >
-              <span className="sr-only">First</span>
-            </button> */}
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                onClick={() => handlePaginationClick(i + 1)}
-                className={`${
-                  currentPage === i + 1 ? "bg-indigo-600 text-white" : "bg-white text-gray-500 hover:bg-gray-50"
-                } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
-              >
-                {i + 1}
-              </button>
-            ))}
-            {/* <button
-              onClick={() => handlePaginationClick(totalPages)}
-              className={`${
-                currentPage === totalPages ? "bg-indigo-600 text-white" : "bg-white text-gray-500 hover:bg-gray-50"
-              } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
-            >
-              <span className="sr-only">Last</span>
-            </button> */}
-          {/* </nav> */}
+              {i + 1}
+            </button>
+          ))}
         </div>
       </div>
     </>

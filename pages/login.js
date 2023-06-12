@@ -4,13 +4,14 @@ import ThemeChanger from '../components/DarkSwitch';
 function Login() {
   useEffect(() => {
     import('@passageidentity/passage-elements/passage-auth').then(() => {
-      // Custom logic after dynamically importing passage-auth  
+
     });
   }, []);
+
   return (
       <div>
         <ThemeChanger theme="light" />
-        <passage-auth app-id={"YkgyHbFAzEUIDk24xNeiDMJs"}></passage-auth>
+        <passage-auth app-id={process.env.NEXT_PUBLIC_PASSAGE_APP_ID}></passage-auth>
       </div>
   );
 }

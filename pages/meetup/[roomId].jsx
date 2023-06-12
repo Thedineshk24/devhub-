@@ -14,7 +14,7 @@ const RoomId = () => {
   const { channelName } = router.query;
   
   const rtcProps = {
-    appId: 'd3a25309e6874d26b4b57aa08756dd26',
+    appId: process.env.NEXT_PUBLIC_AGORA_APP_ID,
     channel: channelName,
     enableScreensharing: true,
     mode: 'live',
@@ -34,7 +34,7 @@ const RoomId = () => {
   };
 
   return (
-    <div className="flex w-70vw h-screen">
+    <div className="flex w-full h-screen">
       <AgoraUIKit rtcProps={rtcProps} callbacks={callbacks} />
     </div>
   );
