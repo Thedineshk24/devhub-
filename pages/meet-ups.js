@@ -8,6 +8,8 @@ import HeaderMyProfile from "../components/headerMyProfile";
 const EventCard = () => {
   const router = useRouter();
   const [eventData, setEventData] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
   useCurrentUser();
 
   useEffect(() => {
@@ -90,6 +92,30 @@ const EventCard = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Pagination
+  const itemsPerPage = 10;
+  const totalItems = eventData ? eventData.length : 0;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedData = eventData?.slice(startIndex, endIndex);
+
+  const handlePaginationClick = (page) => {
+    setCurrentPage(page);
+    router.push(`/events?page=${page}`);
+  };
+
+  // Search
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const filteredData = eventData?.filter((event) =>
+    event.fields.eventName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredPaginatedData = filteredData?.slice(startIndex, endIndex);
+
   return (
     <>
       <HeaderMyProfile />
@@ -97,13 +123,27 @@ const EventCard = () => {
         <h1 className="text-center text-indigo-600 text-3xl font-extrabold">
           Dev Events
         </h1>
-        {eventData &&
-          eventData.map((event) => {
+        <div className="flex justify-end mr-4 mt-2">
+          <input
+            type="text"
+            placeholder="Search"
+            className="border-2 border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+        </div>
+        {filteredPaginatedData &&
+          filteredPaginatedData.map((event) => {
             const techArray = event?.fields?.technology
               ?.split(",")
               .map((tech) => tech.trim());
 
-            const isExpired = event.countdown && event.countdown.days === 0 && event.countdown.hours === 0 && event.countdown.minutes === 0 && event.countdown.seconds === 0;
+            const isExpired =
+              event.countdown &&
+              event.countdown.days === 0 &&
+              event.countdown.hours === 0 &&
+              event.countdown.minutes === 0 &&
+              event.countdown.seconds === 0;
 
             return (
               <div
@@ -144,7 +184,10 @@ const EventCard = () => {
                         <button
                           className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
                           onClick={() =>
-                            handleJoinNow(event.sys.id, event.fields.eventName)
+                            handleJoinNow(
+                              event.sys.id,
+                              event.fields.eventName
+                            )
                           }
                         >
                           Join Now
@@ -174,6 +217,45 @@ const EventCard = () => {
               </div>
             );
           })}
+
+        {/* Pagination */}
+        <div className="flex justify-center mt-4">
+          <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+            <button
+              onClick={() => handlePaginationClick(1)}
+              className={`${
+                currentPage === 1 ? "bg-indigo-600 text-white" : "bg-white text-gray-500 hover:bg-gray-50"
+              } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
+            >
+              <span className="sr-only">First</span>
+              <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd" d="M5.293 4.293a1 1 0 0 1 1.414 0L11 8.586V5a1 1 0 0 1 2 0v10a1 1 0 0 1-2 0v-3.586l-4.293 4.293a1 1 0 1 1-1.414-1.414l4.586-4.586a2 2 0 0 0 0-2.828L5.293 4.293z" clipRule="evenodd" />
+              </svg>
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => handlePaginationClick(i + 1)}
+                className={`${
+                  currentPage === i + 1 ? "bg-indigo-600 text-white" : "bg-white text-gray-500 hover:bg-gray-50"
+                } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
+              >
+                {i + 1}
+              </button>
+            ))}
+            <button
+              onClick={() => handlePaginationClick(totalPages)}
+              className={`${
+                currentPage === totalPages ? "bg-indigo-600 text-white" : "bg-white text-gray-500 hover:bg-gray-50"
+              } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
+            >
+              <span className="sr-only">Last</span>
+              <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd" d="M14.707 15.707a1 1 0 0 1-1.414 0L9 11.414V15a1 1 0 0 1-2 0V5a1 1 0 0 1 2 0v3.586l4.293-4.293a1 1 0 1 1 1.414 1.414l-4.586 4.586a2 2 0 0 0 0 2.828l4.586 4.586z" clipRule="evenodd" />
+              </svg>
+            </button>
+          </nav>
+        </div>
       </div>
     </>
   );
