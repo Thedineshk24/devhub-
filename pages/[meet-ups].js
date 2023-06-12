@@ -221,14 +221,14 @@ const EventCard = () => {
         {/* Pagination */}
         <div className="flex justify-center mt-4">
           <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-            <button
+            {/* <button
               onClick={() => handlePaginationClick(1)}
               className={`${
                 currentPage === 1 ? "bg-indigo-600 text-white" : "bg-white text-gray-500 hover:bg-gray-50"
               } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
             >
               <span className="sr-only">First</span>
-            </button>
+            </button> */}
             {Array.from({ length: totalPages }, (_, i) => (
               <button
                 key={i + 1}
@@ -240,14 +240,14 @@ const EventCard = () => {
                 {i + 1}
               </button>
             ))}
-            <button
+            {/* <button
               onClick={() => handlePaginationClick(totalPages)}
               className={`${
                 currentPage === totalPages ? "bg-indigo-600 text-white" : "bg-white text-gray-500 hover:bg-gray-50"
               } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
             >
               <span className="sr-only">Last</span>
-            </button>
+            </button> */}
           </nav>
         </div>
       </div>
