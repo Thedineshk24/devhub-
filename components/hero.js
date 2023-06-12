@@ -13,8 +13,7 @@ const Hero = () => {
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
               DevHub is the ultimate website for developers who love events.
-              Find and join the best tech talks, events and more in your
-              city. No passwords needed -{" "}
+              Find and join the best tech talks, events. No passwords needed -{" "}
               <a
                 target="_blank"
                 href="https://1password.com/"
