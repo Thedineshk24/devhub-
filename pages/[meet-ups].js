@@ -220,7 +220,7 @@ const EventCard = () => {
 
         {/* Pagination */}
         <div className="flex justify-center mt-4">
-          <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+          {/* <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination"> */}
             {/* <button
               onClick={() => handlePaginationClick(1)}
               className={`${
@@ -248,7 +248,7 @@ const EventCard = () => {
             >
               <span className="sr-only">Last</span>
             </button> */}
-          </nav>
+          {/* </nav> */}
         </div>
       </div>
     </>
