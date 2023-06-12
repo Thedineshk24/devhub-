@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
-import {useRouter} from "next/router";
-import {createClient} from "contentful";
-import {RtcTokenBuilder, RtcRole} from "agora-access-token";
-import {useCurrentUser} from "../hooks/useCurrentUser";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { createClient } from "contentful";
+import { RtcTokenBuilder, RtcRole } from "agora-access-token";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 import HeaderMyProfile from "../components/headerMyProfile";
 
 const EventCard = () => {
@@ -52,27 +52,26 @@ const EventCard = () => {
   };
 
   const calculateCountdown = (startDate) => {
-  const currentDate = new Date();
-  const eventDate = new Date(startDate);
+    const currentDate = new Date();
+    const eventDate = new Date(startDate);
 
-  const timeDiff = eventDate - currentDate;
-  let days, hours, minutes, seconds;
+    const timeDiff = eventDate - currentDate;
+    let days, hours, minutes, seconds;
 
-  if (timeDiff < 0) {
-    days = 0;
-    hours = 0;
-    minutes = 0;
-    seconds = 0;
-  } else {
-    days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-  }
+    if (timeDiff < 0) {
+      days = 0;
+      hours = 0;
+      minutes = 0;
+      seconds = 0;
+    } else {
+      days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    }
 
-  return { days, hours, minutes, seconds };
-};
-
+    return { days, hours, minutes, seconds };
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -80,7 +79,7 @@ const EventCard = () => {
         if (prevEventData) {
           const updatedEventData = prevEventData.map((event) => {
             const countdown = calculateCountdown(event.fields.startDate);
-            return {...event, countdown};
+            return { ...event, countdown };
           });
           return updatedEventData;
         }
@@ -103,6 +102,8 @@ const EventCard = () => {
             const techArray = event?.fields?.technology
               ?.split(",")
               .map((tech) => tech.trim());
+
+            const isExpired = event.countdown && event.countdown.days === 0 && event.countdown.hours === 0 && event.countdown.minutes === 0 && event.countdown.seconds === 0;
 
             return (
               <div
@@ -135,16 +136,22 @@ const EventCard = () => {
                   </div>
                   <div className="flex justify-between">
                     <div className="flex items-center mr-4">
-                      <button
-                        className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
-                        onClick={() =>
-                          handleJoinNow(event.sys.id, event.fields.eventName)
-                        }
-                      >
-                        Join Now
-                      </button>
+                      {isExpired ? (
+                        <button className="bg-red-600 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
+                          Expired
+                        </button>
+                      ) : (
+                        <button
+                          className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+                          onClick={() =>
+                            handleJoinNow(event.sys.id, event.fields.eventName)
+                          }
+                        >
+                          Join Now
+                        </button>
+                      )}
                     </div>
-                    {event.countdown && (
+                    {event.countdown && !isExpired && (
                       <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded animate-pulse">
                         <div className="flex items-center">
                           <div className="bg-indigo-100 text-indigo-600 rounded-full w-12 h-12 flex items-center justify-center mr-2">
