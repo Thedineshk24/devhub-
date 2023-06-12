@@ -228,9 +228,6 @@ const EventCard = () => {
               } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
             >
               <span className="sr-only">First</span>
-              <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fillRule="evenodd" d="M5.293 4.293a1 1 0 0 1 1.414 0L11 8.586V5a1 1 0 0 1 2 0v10a1 1 0 0 1-2 0v-3.586l-4.293 4.293a1 1 0 1 1-1.414-1.414l4.586-4.586a2 2 0 0 0 0-2.828L5.293 4.293z" clipRule="evenodd" />
-              </svg>
             </button>
             {Array.from({ length: totalPages }, (_, i) => (
               <button
@@ -250,9 +247,6 @@ const EventCard = () => {
               } relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium focus:outline-none`}
             >
               <span className="sr-only">Last</span>
-              <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fillRule="evenodd" d="M14.707 15.707a1 1 0 0 1-1.414 0L9 11.414V15a1 1 0 0 1-2 0V5a1 1 0 0 1 2 0v3.586l4.293-4.293a1 1 0 1 1 1.414 1.414l-4.586 4.586a2 2 0 0 0 0 2.828l4.586 4.586z" clipRule="evenodd" />
-              </svg>
             </button>
           </nav>
         </div>
