@@ -52,7 +52,7 @@ const PopupWidget = () => {
         {({ open }) => (
           <>
             <Disclosure.Button className="fixed z-40 flex items-center justify-center transition duration-300 bg-indigo-500 rounded-full shadow-lg right-5 bottom-5 w-14 h-14 focus:outline-none hover:bg-indigo-600 focus:bg-indigo-600 ease">
-              <span className="sr-only">Open Contact form Widget</span>
+              <span className="sr-only">DevHub</span>
               <Transition
                 show={!open}
                 enter="transition duration-200 transform ease"
@@ -106,9 +106,9 @@ const PopupWidget = () => {
               leaveTo="opacity-0 translate-y-5">
               <Disclosure.Panel className=" flex flex-col  overflow-hidden left-0 h-full w-full sm:w-[350px] min-h-[250px] sm:h-[600px] border border-gray-300 dark:border-gray-800 bg-white shadow-2xl rounded-md sm:max-h-[calc(100vh-120px)]">
                 <div className="flex flex-col items-center justify-center h-32 p-5 bg-indigo-600">
-                  <h3 className="text-lg text-white">How can we help?</h3>
+                  <h3 className="text-lg text-white">Want to submit your event?</h3>
                   <p className="text-white opacity-50">
-                    We usually respond in a few hours
+                    Fill below form, we'll submit your event after verification to our portal.
                   </p>
                 </div>
                 <div className="flex-grow h-full p-6 overflow-auto bg-gray-50 ">
@@ -197,7 +197,7 @@ const PopupWidget = () => {
                         <label
                           htmlFor="message"
                           className="block mb-2 text-sm text-gray-600 dark:text-gray-400">
-                          Your Message
+                          Add title of your event and description here ...
                         </label>
 
                         <textarea
@@ -279,7 +279,7 @@ const PopupWidget = () => {
                           />
                         </svg>
                         <h3 className="py-5 text-xl text-green-500">
-                          Message sent successfully
+                          Event sent successfully
                         </h3>
                         <p className="text-gray-700 md:px-3">{Message}</p>
                         <button
