@@ -35,7 +35,7 @@ const Home = () => {
       <Benefits data={benefitOne} />
       <SectionTitle
         pretitle="Watch a video"
-        title="Learn how to fullfil your needs"
+        title="What is DevHub?"
       />
       <Video />
       <SectionTitle
